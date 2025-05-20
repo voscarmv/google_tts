@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Testing Google TTS API barebones node",
   "main": "index.js",
-  "type": "module", 
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,7 @@
   "dependencies": {
     "@google-cloud/text-to-speech": "^6.1.0",
     "dotenv": "^16.5.0",
-    "gitignore": "^0.7.0"
+    "gitignore": "^0.7.0",
+    "node-fetch": "^3.3.2"
   }
 }

@@ -11,3 +11,6 @@ Testing Google TTS API barebones node
 - https://cloud.google.com/nodejs/docs/reference/text-to-speech/latest/text-to-speech/v1.texttospeechlongaudiosynthesizeclient
 - https://cloud.google.com/text-to-speech/docs/create-audio-text-long-audio-synthesis
 - https://github.com/googleapis/googleapis/blob/master/google/cloud/texttospeech/v1/cloud_tts_lrs.proto
+- https://cloud.google.com/storage/docs/lifecycle#conditions
+- https://cloud.google.com/storage/docs/samples/storage-make-public
+- https://cloud.google.com/storage/docs/access-public-data#api-link

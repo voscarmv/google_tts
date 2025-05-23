@@ -3,6 +3,7 @@ import textToSpeech from '@google-cloud/text-to-speech';
 import { Storage } from '@google-cloud/storage';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
 
 dotenv.config();
 
@@ -33,7 +34,8 @@ async function synthesizeLongAudio() {
   const text = await loadTextFile('./essay.txt');
   if (!text) return;
 
-  const outputGcsUri = process.env.OUTPUT_URI; // e.g., 'gs://your-bucket-name/output.wav'
+  const filename = `${uuidv4()}.wav`; 
+  const outputGcsUri = `gs://${process.env.OUTPUT_URI}/${filename}`; // e.g., 'gs://your-bucket-name/output.wav'
   const parent = process.env.PARENT; // e.g., 'projects/your-project-id/locations/us'
 
   const request = {
@@ -62,7 +64,9 @@ async function synthesizeLongAudio() {
     // console.log("progresso ", progresso.metadata.progressPercentage);
     if (currentOperation.done) {
       isDone = true;
+      await storage.bucket(process.env.OUTPUT_URI).file(filename).makePublic();
       console.log('Synthesis complete.');
+      console.log(`https://storage.googleapis.com/${process.env.OUTPUT_URI}/${filename}`);
     } else {
       // const metadata = currentOperation.metadata;
       const progress = progresso.metadata.progressPercentage;
